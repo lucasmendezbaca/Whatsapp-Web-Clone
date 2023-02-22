@@ -13,12 +13,26 @@ const io = require('socket.io')(server, {
     }
 })
 
-
 app.use(express.static('public'))
 
 // app.get('/', (req, res) => {
 //   res.send('<h1>Prueba</h1>')
 // })
+
+io.on('connection', (socket) => {
+    socket.nombre = '';
+    console.log('a user connected')
+
+    socket.on('nombre', (nombre) => {
+        socket.nombre = nombre;
+        console.log('Recibo nombre: ' + nombre)
+    })
+
+    socket.on('disconnect', () => {
+        console.log('user disconnected' + socket.nombre)
+    })
+})
+
 
 server.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

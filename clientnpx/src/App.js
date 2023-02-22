@@ -8,17 +8,15 @@ const socket = io('http://localhost:3001')
 
 function App() {
 
-  // useEffect(() => {
-  //   socket.on('connect', () => {
-  //     console.log('Connected to server')
-  //   })
-  //   socket.on('disconnect', () => {
-  //     console.log('Disconnected from server')
-  //   })
-  // }, [])
 
   return (
-    <Router />
+    <>
+      {/* <input type="text" id="nombre" />
+      <button onClick={() => {
+        socket.emit('nombre', document.getElementById('nombre').value)
+      }}>Enviar</button> */}
+      <Router />
+    </>
   );
 }
 
