@@ -3,7 +3,7 @@ import Chat from "./Chat/Chat";
 
 function Main() {
     return(
-        <div class="container main">
+        <div className="container main">
             <ContactSidebar />
             <Chat />
         </div>

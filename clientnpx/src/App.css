@@ -6,6 +6,15 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+ul {
+  list-style: none;
+}
+
 .animate__animated {
   --animate-duration: 200ms;
   --animate-delay: 0.3s;

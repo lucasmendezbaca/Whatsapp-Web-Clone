@@ -1,8 +1,7 @@
 function Home() {
   return (
     <div>
-      <h1>Home</h1>
-      <p>Essa é a Home</p>
+      <h1>Whatsapp Web Clone</h1>
     </div>
   );
 }
