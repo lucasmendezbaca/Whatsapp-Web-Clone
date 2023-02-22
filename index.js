@@ -19,3 +19,7 @@ app.use(express.static('public'))
 // app.get('/', (req, res) => {
 //   res.send('<h1>Prueba</h1>')
 // })
+
+server.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
