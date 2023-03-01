@@ -8,10 +8,10 @@ function Router() {
   return (
     <>
       <BrowserRouter>
-        <Navigation />
+        {/* <Navigation /> */}
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Chats" element={<Main />} />
+          <Route path="/chats" element={<Main />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
