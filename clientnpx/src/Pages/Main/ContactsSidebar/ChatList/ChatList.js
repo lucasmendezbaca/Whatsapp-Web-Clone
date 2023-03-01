@@ -1,4 +1,4 @@
-function ChatList() {
+function ChatList({ user }) {
     return (
         <div className="block chat-list" onclick="openRightSide()">
             <div className="imgBox">

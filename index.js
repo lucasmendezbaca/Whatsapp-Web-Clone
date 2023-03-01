@@ -24,14 +24,16 @@ io.on('connection', (socket) => {
         console.log('Nuebo usuario: ' + user.name)
         users.push(user)
 
-        io.emit('users', users)
+        socket.emit('users', users)
+        socket.broadcast.emit('users', users)
     })
 
     socket.on('disconnect', () => {
         console.log('user disconnected' + socket.name)
         users = users.filter(user => user.name !== socket.name)
 
-        io.emit('users', users)
+        socket.emit('users', users)
+        socket.broadcast.emit('users', users)
     })
 })
 

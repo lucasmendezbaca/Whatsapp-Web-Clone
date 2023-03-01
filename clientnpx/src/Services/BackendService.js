@@ -1,7 +1,8 @@
 import { io } from 'socket.io-client';
 
-const socket = io('http://localhost:3001')
+export const socket = io('http://localhost:3001')
 
-export default function newUser(user) {
+export function newUser(user) {
+    console.log(socket)
     socket.emit('newUser', user)
 }

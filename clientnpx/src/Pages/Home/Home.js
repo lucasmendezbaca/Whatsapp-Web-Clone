@@ -1,9 +1,22 @@
-import { useState } from "react";
-import newUser from "../../Services/BackendService";
+import { useState, useEffect } from "react";
+import { newUser } from "../../Services/BackendService";
+import { socket } from "../../Services/BackendService";
 
 function Home() {
   const [name, setName] = useState("");
   const [status, setStatus] = useState("");
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    socket.on('users', (users) => {
+      console.log(users)
+      setUsers(users)
+    })
+
+    return () => {
+      socket.off('users')
+    }
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,6 +39,15 @@ function Home() {
         
         <input type="submit" value="Entrar" />
       </form>
+
+      {
+        users.map(user => (
+          <div key={user.name}>
+            <h3>{user.name}</h3>
+            <p>{user.status}</p>
+          </div>
+        ))
+      }
     </div>
   );
 }

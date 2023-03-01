@@ -1,4 +1,8 @@
 import ChatList from "./ChatList/ChatList";
+// import { socket } from "../../../Services/BackendService";
+
+import { io } from 'socket.io-client';
+export const socket = io('http://localhost:3001')
 
 function ContactSidebar() {
     return(
@@ -77,7 +81,16 @@ function ContactSidebar() {
             </div>
 
             <div className="chats">
-                <ChatList />
+                {/* <ChatList /> */}
+                {
+                    // socket.on("users", (users) => {
+                    //     users.map((user, index) => {
+                    //         return <ChatList key={index} user={user} />
+                    //     })
+                    // })
+
+                    // console.log(socket)
+                }
             </div>
         </div>
     )
