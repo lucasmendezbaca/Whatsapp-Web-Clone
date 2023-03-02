@@ -1,10 +1,22 @@
 import ChatList from "./ChatList/ChatList";
-// import { socket } from "../../../Services/BackendService";
-
-import { io } from 'socket.io-client';
-export const socket = io('http://localhost:3001')
+import { socket } from "../../../Services/BackendService";
+import { useState, useEffect } from "react";
 
 function ContactSidebar() {
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        console.log('ContactSidebar')
+        socket.on('users', (users) => {
+            console.log(users)
+            setUsers(users)
+        })
+
+        return () => {
+            socket.off('users')
+        }
+    }, [])
+
     return(
         <div className="leftSide animate__animated animate__fadeInRight" id="leftSid">
             <div className="header">
@@ -83,13 +95,9 @@ function ContactSidebar() {
             <div className="chats">
                 {/* <ChatList /> */}
                 {
-                    // socket.on("users", (users) => {
-                    //     users.map((user, index) => {
-                    //         return <ChatList key={index} user={user} />
-                    //     })
-                    // })
-
-                    // console.log(socket)
+                    users.map((user, index) => {
+                        return <ChatList key={index} user={user} />
+                    })
                 }
             </div>
         </div>
