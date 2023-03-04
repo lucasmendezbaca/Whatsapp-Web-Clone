@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { newUser, saveImage } from "../../Services/BackendService";
 import { useNavigate } from 'react-router-dom';
-// import axios from "axios";
-// import { socket } from "../../Services/BackendService";
 
-function Home() {
+function Home({ setCurrentUser }) {
   const [name, setName] = useState("");
   const [status, setStatus] = useState("");
   const [image, setImage] = useState("");
@@ -22,6 +20,8 @@ function Home() {
       status: status,
       image: imgName,
     };
+
+    setCurrentUser(user);
 
     newUser(user);
     navigate('/chats');

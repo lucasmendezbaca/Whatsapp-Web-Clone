@@ -1,7 +1,8 @@
-function Message() {
+function Message({ message, currentUser }) {
+
     return (
-        <p className="chatMessage my-chat">
-            <span>Hi </span>
+        <p className={`chatMessage ${currentUser.name === message.sender ? 'my-chat' : 'frnd-chat'}`}>
+            <span>{message.text}</span>
             <span className="chat__msg-filler"> </span>
             <span className="msg-footer">
                 <span>08:11 AM</span>

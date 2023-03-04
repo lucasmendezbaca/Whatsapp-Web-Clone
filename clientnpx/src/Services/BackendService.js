@@ -4,8 +4,11 @@ import axios from "axios";
 export const socket = io('http://localhost:3001')
 
 export function newUser(user) {
-    console.log(socket)
     socket.emit('newUser', user)
+}
+
+export function newMessage(message) {
+    socket.emit('newMessage', message)
 }
 
 export function saveImage(image) {

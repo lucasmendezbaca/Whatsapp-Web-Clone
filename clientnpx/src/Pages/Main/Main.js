@@ -3,7 +3,7 @@ import ContactSidebar from "./ContactsSidebar/ContactSidebar";
 import Chat from "./Chat/Chat";
 import ChatDetail from "./ChatDetail/ChatDetail";
 
-function Main() {
+function Main({ currentUser }) {
     const [selectedChat, setSelectedChat] = useState(null);
 
     useEffect(() => {
@@ -13,11 +13,7 @@ function Main() {
     return(
         <div className="container main">
             <ContactSidebar setSelectedChat={setSelectedChat} />
-            {/* <Chat /> */}
-            {/* si selectedChat == null que se renderice <Chat /> <ChatDetail />*/}
-            {/* si selectedChat != null que se renderice <ChatDetail /> */}
-            {selectedChat ? <ChatDetail selectedChat={selectedChat} /> : <Chat />}
-            {/* <ChatDetail selectedChat={selectedChat} /> */}
+            {selectedChat ? <ChatDetail selectedChat={selectedChat} currentUser={currentUser} /> : <Chat />}
         </div>
     )
 

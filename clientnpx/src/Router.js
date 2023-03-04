@@ -4,14 +4,14 @@ import Home from "./Pages/Home/Home";
 import Main from "./Pages/Main/Main";
 import Navigation from "./Components/Navigation/Navigation";
 
-function Router() {
+function Router({ setCurrentUser, currentUser }) {
   return (
     <>
       <BrowserRouter>
         {/* <Navigation /> */}
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/chats" element={<Main />} />
+          <Route path="/" element={<Home setCurrentUser={setCurrentUser} />} />
+          <Route path="/chats" element={<Main currentUser={currentUser} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

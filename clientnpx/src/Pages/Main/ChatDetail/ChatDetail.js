@@ -1,7 +1,44 @@
 import './ChatDetail.css';
 import Message from './Message/Message';
+import { newMessage } from '../../../Services/BackendService';
+import { useState, useEffect } from "react";
+import { socket } from "../../../Services/BackendService";
 
-function ChatDetail({ selectedChat }) {
+function ChatDetail({ selectedChat, currentUser }) {
+    const [messages, setMessages] = useState([]);
+
+    useEffect(() => {
+        console.log('ChatDetail')
+        socket.on('messages', (messages) => {
+            console.log(messages)
+            setMessages(messages)
+        })
+
+        return () => {
+            socket.off('messages')
+        }
+    }, [])
+
+    const handleSubmit = (e) => {
+        const message = {
+            text: e.target.value,
+            sender: currentUser.name,
+            receiver: selectedChat,
+            date: new Date(),
+        };
+
+        console.log(message)
+
+        newMessage(message);
+        e.target.value = '';
+    };
+
+    function handleKeyPress(e) {
+        if (e.key === 'Enter') {
+            handleSubmit(e);
+        }
+    }
+
     return (
         <div className="Right-Container" id="right">
             <div className="rightSide" id="rightSide">
@@ -42,7 +79,11 @@ function ChatDetail({ selectedChat }) {
                             read or listen to them. Click to learn more.
                         </p>
 
-                        <Message />
+                        {
+                            messages.map((message, index) => {
+                                return <Message key={index} message={message} currentUser={currentUser} />
+                            })
+                        }
 
                         {/* <p className="chatMessage my-chat">
                             <span>Hi </span>
@@ -354,7 +395,7 @@ function ChatDetail({ selectedChat }) {
                             </div>
                         </div>
 
-                        <input type="text" placeholder="Type a message" className="send-message" />
+                        <input onKeyUp={handleKeyPress} id='message-input' type="text" placeholder="Type a message" className="send-message" />
 
                         <button role="button" className="icons">
                             <span className="">

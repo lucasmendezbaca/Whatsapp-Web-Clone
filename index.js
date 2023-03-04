@@ -57,6 +57,7 @@ app.get('/images/:name', (req, res) => {
 })
 
 var users = []
+var messages = []
 
 io.on('connection', (socket) => {
     console.log('a user connected')
@@ -70,6 +71,14 @@ io.on('connection', (socket) => {
 
         socket.emit('users', users)
         socket.broadcast.emit('users', users)
+    })
+
+    socket.on('newMessage', (message) => {
+        console.log('Nuevo mensaje: ' + message.text)
+        messages.push(message)
+
+        socket.emit('messages', messages)
+        socket.broadcast.emit('messages', messages)
     })
 
     socket.on('disconnect', () => {
