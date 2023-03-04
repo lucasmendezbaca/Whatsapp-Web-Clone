@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { newUser } from "../../Services/BackendService";
+import { newUser, saveImage } from "../../Services/BackendService";
 import { useNavigate } from 'react-router-dom';
-import axios from "axios";
+// import axios from "axios";
 // import { socket } from "../../Services/BackendService";
 
 function Home() {
@@ -13,9 +13,11 @@ function Home() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3001/', image, {
-      image_name: image.name,
-    })
+    // axios.post('http://localhost:3001/', image, {
+    //   image_name: image.name,
+    // })
+
+    saveImage(image)
 
     const user = {
       name: name,
