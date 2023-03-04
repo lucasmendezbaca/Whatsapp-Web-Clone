@@ -1,0 +1,7 @@
+.Right-Container {
+flex: 70%; display: flex;overflow: hidden;
+}
+
+.rightSide {
+display: flex;
+}

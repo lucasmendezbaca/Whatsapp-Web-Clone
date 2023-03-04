@@ -2,7 +2,7 @@ import ChatList from "./ChatList/ChatList";
 import { socket } from "../../../Services/BackendService";
 import { useState, useEffect } from "react";
 
-function ContactSidebar() {
+function ContactSidebar({ setSelectedChat }) {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -17,6 +17,10 @@ function ContactSidebar() {
         }
     }, [])
 
+    function handleChatClick(user) {
+        setSelectedChat(user)
+    }
+
     return(
         <div className="leftSide animate__animated animate__fadeInRight" id="leftSid">
             <div className="header">
@@ -25,9 +29,9 @@ function ContactSidebar() {
                 </div>
 
                 <ul className="dropLeft" id="dropLeft">
-                    <li className="listItem" role="button" onclick="openGrp()">New group</li>
-                    <li className="listItem" role="button" onclick="openStarred()">Starred messages</li>
-                    <li className="listItem" role="button" onclick="openSettings()">Settings</li>
+                    <li className="listItem" role="button">New group</li>
+                    <li className="listItem" role="button">Starred messages</li>
+                    <li className="listItem" role="button">Settings</li>
                     <li className="listItem" role="button" data-bs-toggle="modal" data-bs-target="#exampleModalSec">Log out
                     </li>
                 </ul>
@@ -35,7 +39,7 @@ function ContactSidebar() {
                 <div className="ICON">
                     <img src="images/Sun-1.png" alt="" id="moon" className="icons" title="Light Mode"
                         aria-label="Light Mode" />
-                    <button role="button" className="icons" onclick="openStatus()">
+                    <button role="button" className="icons">
                         <span className="">
                             <svg version="1.1" x="0" y="0" viewBox="0 0 24 24" width="24" height="24" className="">
                                 <path fill="currentColor"
@@ -47,7 +51,7 @@ function ContactSidebar() {
                         </span>
                     </button>
 
-                    <button role="button" className="icons" onclick="openForm()">
+                    <button role="button" className="icons">
                         <span className="">
                             <svg viewBox="0 0 24 24" width="24" height="24" className="">
                                 <path fill="currentColor"
@@ -93,7 +97,10 @@ function ContactSidebar() {
             </div>
 
             <div className="chats">
-                {/* <ChatList /> */}
+                <div onClick={() => handleChatClick('General')}>
+                    <ChatList user={{name: 'General', status: 'Chat General', image: 'anillo.jpg'}}/>
+                </div>
+                {/* <ChatList user={{name: 'General', status: 'Chat General', image: 'anillo.jpg'}} onClick={() => handleChatClick('General')} /> */}
                 {
                     users.map((user, index) => {
                         return <ChatList key={index} user={user} />

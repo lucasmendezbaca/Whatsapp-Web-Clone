@@ -1,30 +1,9 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-
 function ChatList({ user }) {
-    // const [image, setImage] = useState("");
-
-    // useEffect(() => {
-    //     axios.get(`http://localhost:3001/images/${user.image}`)
-    //         .then(res => {
-    //             const reader = new FileReader();
-    //             // pasar res.data a blob
-    //             const imgBlob = new Blob([res.data], { type: 'image/jpg' });
-    //             reader.readAsDataURL(imgBlob);
-    //             reader.onload = () => {
-    //                 setImage(reader.result);
-    //                 console.log(reader.result)
-    //             }
-    //         })
-    // }, [])
 
     return (
-        <div className="block chat-list" onclick="openRightSide()">
+        <div className="block chat-list">
             <div className="imgBox">
-                {/* <img src="http://localhost:3001/images/anillo.jpg" className="cover" /> */}
                 <img src={`http://localhost:3001/images/${user.image}`} className="cover" />
-                {/* <img src={image} className="cover" /> */}
-                {/* {image && <img src={image} className="cover" />} */}
             </div>
             <div className="h-text">
                 <div className="head">

@@ -11,21 +11,17 @@ function Home() {
   const [imgName, setImgName] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // axios.post('http://localhost:3001/', image, {
-    //   image_name: image.name,
-    // })
 
-    saveImage(image)
+    await saveImage(image)
 
+    console.log('despues de saveImage')
     const user = {
       name: name,
       status: status,
       image: imgName,
     };
-
-    console.log(imgName)
 
     newUser(user);
     navigate('/chats');

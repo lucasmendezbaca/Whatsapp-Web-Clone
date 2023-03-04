@@ -8,38 +8,17 @@ export function newUser(user) {
     socket.emit('newUser', user)
 }
 
-export async function saveImage(image) {
-    const response = await axios.post('http://localhost:3001/', image, {
-      image_name: image.name,
+export function saveImage(image) {
+    return new Promise((resolve, reject) => {
+        axios.post('http://localhost:3001/', image, {
+        image_name: image.name,
+        })
+        .then((response) => {
+            console.log('response saveImage' + response)
+            resolve(response)
+        })
+        .catch((error) => {
+            reject(error)
+        })
     })
-
-    console.log(response)
 }
-
-
-
-
-
-
-
-
-
-
-    // axios.post('http://localhost:3001/', image, {
-    //   image_name: image.name,
-    // })
-
-// funcion asincrona para enviar la imagen al servidor
-// const send_image = async (files) => {
-//     const formData = new FormData();
-//     formData.append('file', files)
-//     setImage(formData)
-//     setImgName(files.name)
-//     console.log(formData)
-//     const response = await axios.post('http://localhost:3001/', formData, {
-//         headers: {
-//             'Content-Type': 'multipart/form-data'
-//         }
-//     })
-//     console.log(response)
-// }
