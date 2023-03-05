@@ -679,7 +679,7 @@ button {
 
 .chatMessage {
   position: relative;
-  display: flex;
+  display: block;
   margin: 10px 0;
 }
 
@@ -691,7 +691,7 @@ button {
 
 .chatMessage {
   position: relative;
-  display: flex;
+  display: block;
   width: fit-content;
   max-width: 100%;
   padding: 6px 7px 8px 9px;

@@ -54,6 +54,9 @@ io.on('connection', (socket) => {
 
         users.push(user)
 
+        // socket.emit('hasJoined', socket.name)
+        // socket.broadcast.emit('hasJoined', socket.name)
+
         socket.emit('users', users)
         socket.broadcast.emit('users', users)
     })
