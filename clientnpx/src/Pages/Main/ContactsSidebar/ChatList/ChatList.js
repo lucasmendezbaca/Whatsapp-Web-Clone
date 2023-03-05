@@ -10,7 +10,7 @@ function ChatList({ user }) {
             <div className="h-text">
                 <div className="head">
                     <h4 title="Shayan" aria-label="Shayan">{user.name}</h4>
-                    <p className="time">12:44 AM</p>
+                    <p className="time">online</p>
                 </div>
                 <div className="message-chat">
                     <div className="tick-icon">

@@ -26,3 +26,11 @@ export function saveImage(image) {
         })
     })
 }
+
+export function throwUsers() {
+    socket.emit('throwUsers')
+}
+
+export function throwMessages() {
+    socket.emit('throwMessages')
+}

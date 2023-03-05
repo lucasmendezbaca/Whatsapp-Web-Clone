@@ -66,6 +66,14 @@ io.on('connection', (socket) => {
         socket.broadcast.emit('messages', messages)
     })
 
+    socket.on('throwUsers', () => {
+        socket.emit('users', users)
+    })
+
+    socket.on('throwMessages', () => {
+        socket.emit('messages', messages)
+    })
+
     socket.on('disconnect', () => {
         console.log('user disconnected' + socket.name)
         users = users.filter(user => user.name !== socket.name)

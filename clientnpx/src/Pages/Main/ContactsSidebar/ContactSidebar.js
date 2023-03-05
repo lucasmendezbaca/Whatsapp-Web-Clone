@@ -1,11 +1,23 @@
 import ChatList from "./ChatList/ChatList";
-import { serverUrl, socket } from "../../../Services/BackendService";
+import { serverUrl, socket, getUsers, throwUsers } from "../../../Services/BackendService";
 import { useState, useEffect } from "react";
 
 function ContactSidebar({ setSelectedChat, currentUser }) {
     const [users, setUsers] = useState([]);
 
+
+    // useEffect(() => {
+    //     console.log('ContactSidebar')
+
+    //     getUsers().then((users) => {
+    //         console.log(users)
+    //         setUsers(users)
+    //     })
+    // }, [])
+
     useEffect(() => {
+        throwUsers()
+
         console.log('ContactSidebar')
         socket.on('users', (users) => {
             console.log(users)

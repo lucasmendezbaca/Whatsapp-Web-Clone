@@ -2,12 +2,13 @@ import './ChatDetail.css';
 import Message from './Message/Message';
 import { newMessage } from '../../../Services/BackendService';
 import { useState, useEffect } from "react";
-import { socket } from "../../../Services/BackendService";
+import { socket, throwMessages } from "../../../Services/BackendService";
 
 function ChatDetail({ selectedChat, currentUser }) {
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
+        throwMessages()
         console.log('ChatDetail')
         socket.on('messages', (messages) => {
             console.log(messages)
