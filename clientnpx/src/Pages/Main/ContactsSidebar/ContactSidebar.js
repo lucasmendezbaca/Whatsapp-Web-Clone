@@ -1,19 +1,9 @@
 import ChatList from "./ChatList/ChatList";
-import { serverUrl, socket, getUsers, throwUsers } from "../../../Services/BackendService";
+import { serverUrl, socket, throwUsers } from "../../../Services/BackendService";
 import { useState, useEffect } from "react";
 
 function ContactSidebar({ setSelectedChat, currentUser }) {
     const [users, setUsers] = useState([]);
-
-
-    // useEffect(() => {
-    //     console.log('ContactSidebar')
-
-    //     getUsers().then((users) => {
-    //         console.log(users)
-    //         setUsers(users)
-    //     })
-    // }, [])
 
     useEffect(() => {
         throwUsers()
@@ -109,8 +99,8 @@ function ContactSidebar({ setSelectedChat, currentUser }) {
             </div>
 
             <div className="chats">
-                <div onClick={() => handleChatClick('General')}>
-                    <ChatList user={{name: 'General', status: 'Chat General', image: 'anillo.jpg'}}/>
+                <div onClick={() => handleChatClick({name: 'Grupo General', status: 'Chat General', image: 'anillo.jpg'})}>
+                    <ChatList user={{name: 'Grupo General', status: 'Chat General', image: 'anillo.jpg'}}/>
                 </div>
                 {
                     users.map((user, index) => {

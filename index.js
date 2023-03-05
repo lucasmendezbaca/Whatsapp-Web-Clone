@@ -69,6 +69,12 @@ io.on('connection', (socket) => {
         socket.broadcast.emit('messages', messages)
     })
 
+    socket.on('isTyping', (user) => {
+        console.log('Escribiendo: ' + user)
+        // socket.emit('isTyping', user)
+        socket.broadcast.emit('isTyping', user)
+    })
+
     socket.on('throwUsers', () => {
         socket.emit('users', users)
     })

@@ -27,6 +27,10 @@ export function saveImage(image) {
     })
 }
 
+export function isTyping(user) {
+    socket.emit('isTyping', user)
+}
+
 export function throwUsers() {
     socket.emit('throwUsers')
 }
