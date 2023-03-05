@@ -1,7 +1,8 @@
 import { io } from 'socket.io-client';
 import axios from "axios";
 
-export const socket = io('http://localhost:3001')
+export const serverUrl = 'http://localhost:3001'
+export const socket = io(serverUrl)
 
 export function newUser(user) {
     socket.emit('newUser', user)

@@ -1,8 +1,8 @@
 import ChatList from "./ChatList/ChatList";
-import { socket } from "../../../Services/BackendService";
+import { serverUrl, socket } from "../../../Services/BackendService";
 import { useState, useEffect } from "react";
 
-function ContactSidebar({ setSelectedChat }) {
+function ContactSidebar({ setSelectedChat, currentUser }) {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -25,7 +25,7 @@ function ContactSidebar({ setSelectedChat }) {
         <div className="leftSide animate__animated animate__fadeInRight" id="leftSid">
             <div className="header">
                 <div className="userImg">
-                    <img src="images/Avatar-10.jpeg" alt="" className="cover" />
+                    <img src={`${serverUrl}/images/${currentUser.image}`} alt="" className="cover" />
                 </div>
 
                 <ul className="dropLeft" id="dropLeft">
@@ -100,7 +100,6 @@ function ContactSidebar({ setSelectedChat }) {
                 <div onClick={() => handleChatClick('General')}>
                     <ChatList user={{name: 'General', status: 'Chat General', image: 'anillo.jpg'}}/>
                 </div>
-                {/* <ChatList user={{name: 'General', status: 'Chat General', image: 'anillo.jpg'}} onClick={() => handleChatClick('General')} /> */}
                 {
                     users.map((user, index) => {
                         return <ChatList key={index} user={user} />
