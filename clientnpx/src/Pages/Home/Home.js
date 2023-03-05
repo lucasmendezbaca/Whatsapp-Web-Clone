@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { newUser, saveImage } from "../../Services/BackendService";
 import { useNavigate } from 'react-router-dom';
+import './Home.css';
 
 function Home({ setCurrentUser }) {
   const [name, setName] = useState("");
@@ -37,15 +38,15 @@ function Home({ setCurrentUser }) {
 
 
   return (
-    <div>
-      <h1>Whatsapp Web Clone</h1>
-      <form onSubmit={handleSubmit}>
+    <div className='account-form-container'>
+      <form className="registration" onSubmit={handleSubmit}>
+        <h1>Whatsapp Web Clone</h1>
         <label htmlFor="name">Nombre: </label>
-        <input onChange={e => setName(e.target.value)} type="text" id="name" /><br />
+        <input onChange={e => setName(e.target.value)} type="text" id="name" required /><br />
         <label htmlFor="status">Estado: </label>
-        <input onChange={e => setStatus(e.target.value)} type="text" id="status" /><br />
+        <input onChange={e => setStatus(e.target.value)} type="text" id="status" required /><br />
         <label htmlFor="image">Imagen: </label>
-        <input onChange={(e) => {send_image(e.target.files[0])}} type="file" id="image" /><br />
+        <input onChange={(e) => {send_image(e.target.files[0])}} type="file" id="image" required /><br />
         
         <input type="submit" value="Entrar" />
       </form>

@@ -88,10 +88,13 @@ function ChatDetail({ selectedChat, currentUser }) {
 
                         {
                             messages.map((message, index) => {
-                                return <Message key={index} message={message} currentUser={currentUser} />
+                                if(message.sender) {
+                                    return <Message key={index} message={message} currentUser={currentUser} />
+                                } else {
+                                    return <div key={index} className="chat__date-wrapper"><span className="chat__date">{message.text}</span></div>
+                                }
                             })
                         }
-                        {/* <div className="chat__date-wrapper"><span className="chat__date">John has joined</span></div> */}
 
                 </div>
 

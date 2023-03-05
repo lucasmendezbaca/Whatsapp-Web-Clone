@@ -5,10 +5,12 @@ import './ChatList.css';
 function ChatList({ user }) {
 
     const [isTyping, setIsTyping] = useState(false)
+    const [userTyping, setUserTyping] = useState('')
 
     useEffect(() => {
         socket.on('isTyping', (userTyping) => {
-            console.log('Escribiendo: ' + userTyping.name)
+            console.log('Escribiendo: ' + userTyping)
+            setUserTyping(userTyping)
             setIsTyping(true)
 
             setTimeout(() => {
@@ -20,6 +22,14 @@ function ChatList({ user }) {
             socket.off('isTyping')
         }
     }, [])
+
+    function renderIsTyping() {
+        if (isTyping && user.name == userTyping) {
+            return (
+                <div className="typing">typing...</div>
+            )
+        }
+    }
 
     return (
         <div className="block chat-list">
@@ -44,7 +54,9 @@ function ChatList({ user }) {
                         </div>
                     </div>
 
-                    {isTyping && <div className="typing">typing...</div>}
+                    {
+                        renderIsTyping()
+                    }
 
                 </div>
             </div>

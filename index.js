@@ -53,12 +53,21 @@ io.on('connection', (socket) => {
         console.log('Nuevo usuario: ' + user.name)
 
         users.push(user)
+        messages.push({
+            text: `${user.name} has joined`,
+            sender: null,
+            receiver: 'Grupo General',
+            date: new Date(),
+        })
 
         // socket.emit('hasJoined', socket.name)
         // socket.broadcast.emit('hasJoined', socket.name)
 
         socket.emit('users', users)
         socket.broadcast.emit('users', users)
+
+        socket.emit('messages', messages)
+        socket.broadcast.emit('messages', messages)
     })
 
     socket.on('newMessage', (message) => {
