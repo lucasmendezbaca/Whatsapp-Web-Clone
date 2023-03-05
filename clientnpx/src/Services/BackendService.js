@@ -1,7 +1,7 @@
 import { io } from 'socket.io-client';
 import axios from "axios";
 
-export const serverUrl = 'http://localhost:3001'
+export const serverUrl = 'http://localhost:3001/'
 export const socket = io(serverUrl)
 
 export function newUser(user) {
@@ -14,7 +14,7 @@ export function newMessage(message) {
 
 export function saveImage(image) {
     return new Promise((resolve, reject) => {
-        axios.post('http://localhost:3001/', image, {
+        axios.post(serverUrl, image, {
         image_name: image.name,
         })
         .then((response) => {

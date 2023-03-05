@@ -46,6 +46,8 @@ function ChatDetail({ selectedChat, currentUser }) {
                     <div className="imgText" role="button">
                         <div className="userImg">
                             <img src="images/Avatar-7.jpeg" alt="" className="cover" />
+
+                            {/* <img src={`${serverUrl}images/${currentUser.image}`} alt="" className="cover" /> */}
                         </div>
                         <h4 title="Shayan" aria-label="Shayan">Shayan<br /><span aria-label="online">online</span></h4>
                     </div>

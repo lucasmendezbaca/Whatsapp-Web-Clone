@@ -31,12 +31,6 @@ app.use(fileUpload())
 //   res.send('<h1>Prueba</h1>')
 // })
 
-// app.post('/', (req, res) => {
-//   res.send('Archivo subido')
-// })
-
-// app.use('/' , router)
-
 app.post('/', (req, res, next) => {
     const newPath = __dirname + '/public/images/';
     const file = req.files.file;
@@ -45,15 +39,6 @@ app.post('/', (req, res, next) => {
     file.mv(`${newPath}${filename}`)
 
     res.send('Archivo subido')
-})
-
-// app.get para obtener la foto de un usuario, como parametro el nombre de la foto
-app.get('/images/:name', (req, res) => {
-    const name = req.params.name
-    const path = __dirname + '/public/images/' + name
-
-    res.sendFile(path)
-    // res.sendFile('C:\\Users\\lucas\\Desktop\\2DAW\\Whatsapp-Web-Clone\\public\\images' + name)
 })
 
 var users = []
@@ -65,7 +50,7 @@ io.on('connection', (socket) => {
 
     socket.on('newUser', (user) => {
         socket.name = user.name;
-        console.log('Nuebo usuario: ' + user.name)
+        console.log('Nuevo usuario: ' + user.name)
 
         users.push(user)
 
@@ -94,24 +79,3 @@ io.on('connection', (socket) => {
 server.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
-
-
-
-// ###########
-// const { Server } = require('socket.io')
-// const io = new Server(server)
-
-//  ###########
-
-
-// const file = user.image
-// console.log(file)
-
-// const fileName = file.name
-// console.log(fileName)
-
-// const filePath = __dirname + '\\public\\images\\' + fileName
-// console.log(filePath)
-
-// const fileName = file.split('\\')[file.split('\\').length - 1]
-// console.log(fileName)

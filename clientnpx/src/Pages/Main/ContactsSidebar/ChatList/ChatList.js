@@ -1,9 +1,11 @@
+import { serverUrl } from "../../../../Services/BackendService";
+
 function ChatList({ user }) {
 
     return (
         <div className="block chat-list">
             <div className="imgBox">
-                <img src={`http://localhost:3001/images/${user.image}`} className="cover" />
+                <img src={`${serverUrl}images/${user.image}`} className="cover" />
             </div>
             <div className="h-text">
                 <div className="head">

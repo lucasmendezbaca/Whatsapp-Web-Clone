@@ -25,7 +25,7 @@ function ContactSidebar({ setSelectedChat, currentUser }) {
         <div className="leftSide animate__animated animate__fadeInRight" id="leftSid">
             <div className="header">
                 <div className="userImg">
-                    <img src={`${serverUrl}/images/${currentUser.image}`} alt="" className="cover" />
+                    <img src={`${serverUrl}images/${currentUser.image}`} alt="" className="cover" />
                 </div>
 
                 <ul className="dropLeft" id="dropLeft">
